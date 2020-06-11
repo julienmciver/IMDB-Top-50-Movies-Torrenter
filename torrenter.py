@@ -123,6 +123,7 @@ for z in range(len(magnetLinks)-1):
             qb.resume(tor[0]['hash'])
         if (tor[0]['progress']) == 1:
             print('Finished downloading ' + tor[0]['name'])
+            qb.delete(tor[0]['hash'])
             magnetLinks.pop(0)
             searchAr.pop(0)
             searchDoc.truncate(0)
