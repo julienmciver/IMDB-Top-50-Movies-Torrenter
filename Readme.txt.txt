@@ -22,6 +22,7 @@ torrenter.py
 
 *** torrenter will pause between the hours of 6am and 1am.
  
+ *** I am unsure of how this code will work on another machine. It might not. 
 --------------------------------------------------------------
 To improve this code:
 --------------------------------------------------------------
