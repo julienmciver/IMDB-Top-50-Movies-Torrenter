@@ -113,14 +113,21 @@ for z in range(len(magnetLinks)-1):
         if (cTime_seconds < workingHours[1] and cTime_seconds > workingHours[0]):
             pass
         else:
-            sleeping = ((abs(cTime_seconds - workingHours[0]))/(60*60))
-            print('sleeping for ' + str(sleeping)[:3] + ' hours...')
-            time.sleep(10) 
-            #darn, the pause function isn't working too well. put this here for a cheap fix. todo: make this more stable.
-            qb.pause(tor[0]['hash']) 
-            time.sleep(abs(cTime_seconds - workingHours[0]))
-            print('waking up...')
-            qb.resume(tor[0]['hash'])
+            if int(temp_cTime[0]) > 6:
+                print('Sleeping until midnight')
+           
+                time.sleep(10) 
+                #darn, the pause function isn't working too well. put this here for a cheap fix. todo: make this more stable.
+                qb.pause(tor[0]['hash']) 
+                while (int(temp_cTime[0]) > 6):
+                    t = time.localtime()
+                    current_time = time.strftime("%H:%M:%S", t)
+                    temp_cTime = current_time.split(':')
+                    time.sleep(600)
+
+                    #this is all very inefficient :(
+                print('waking up...')
+                qb.resume(tor[0]['hash'])
         if (tor[0]['progress']) == 1:
             print('Finished downloading ' + tor[0]['name'])
             qb.delete(tor[0]['hash'])
