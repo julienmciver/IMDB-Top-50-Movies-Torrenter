@@ -37,5 +37,6 @@ To improve this code:
 - Parasite doesn't get downloaded, since its listed by its original name (Gisaengchung (2019)), but its not saved that way on any torrents. I just gotta make it so that the code can find out more about the data its working with if it doesn't kow where to find it, or just hard-code a correction in there
   but I'd rather avoid that.
 - Make this run in the background using python.exe
+- Combine movie_downloader with torrenter, so that it gets a single magnet link and then downloads that one immediately, then fetches magnet links while the first one is downloading.
 
 
